@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+		<!-- DB정보를 가지는 datasource 빈객체 생성 -->
+		<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+		    <property value="oracle.jdbc.driver.OracleDriver" name="driverClassName" />
+		    <property value="jdbc:oracle:thin:@localhost:1521:korea" name="url" />
+	        <property name="username" value="lunchbox" />
+		    <property name="password" value="lunchbox"/>
+		</bean>   
+			
+		<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="SqlSessionFactory">
+		  <property name="dataSource" ref="dataSource" />
+		  <property value="classpath:mybatis-config.xml" name="configLocation" />
+		  <property value="classpath:/mapper/*Mapper.xml" name="mapperLocations" />
+		</bean>
+
+		<mybatis-spring:scan base-package="ㅣ1.ㅣ2.ㅣ3.mappers" />	
+			
+			<!-- 
+			 DB정보를 자기는 datasource와 쿼리문을 작성하는 Mapper.xml이 있는 경로 설정하는 mapperLocations를 
+		 포함하는 빈 객체 생성 (파일이 아무것도 가지고 있지 않다면 404 오류 뜨는거 유의하기 )-->
+			
+		<!-- <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="SqlSessionFactory">
+		  <property name="dataSource" ref="dataSource"/>
+		  <property value="classpath:mybatis-config.xml" name="configLocation" />
+		  <property value="classpath:/mapper/*Mapper.xml" name="mapperLocations" />
+		</bean>
+		 -->
+		<!--  DB정보를 자기는 datasource와 쿼리문을 작성하는 Mapper.xml이 있는 경로 설정하는 mapperLocations를 
+		  포함하는 빈 객체를 가지는 sqlSessionTemplate 생성 <- 실제로 Mapper.java에서 주입을 통해 사용함 -->
+		<!-- SqlSessionTemplate DB연결 & 종료 -->
+		<!-- <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		    <constructor-arg ref="sqlSessionFactory"></constructor-arg>
+		</bean>
+				 -->
+</beans>
