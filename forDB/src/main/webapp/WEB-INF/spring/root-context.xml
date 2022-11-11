@@ -15,37 +15,46 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	
+	
+	
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+    <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 			<!-- 1. org.mybatis.spring.SqlSessionTemplate -->
-			<bean id="sqlSession"
-				class="org.mybatis.spring.SqlSessionTemplate">
+<!-- 			<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 				<constructor-arg ref="sqlSessionFactory" />
 			</bean>
 		
-			<bean id="sqlSessionFactory"
-				class="org.mybatis.spring.SqlSessionFactoryBean">
-				<property name="configLocation"
-					value="classpath:mybatis-config.xml" />
+			<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+				<property name="configLocation" value="classpath:mybatis-config.xml" />
 				<property name="dataSource" ref="dataSource" />
 			</bean>
-			
-				<mybatis-spring:scan base-package="ㅣ1.ㅣ2.ㅣ3.mappers" />	
-				
 				
 			<bean id="realDataSource"
 				class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-				<property name="driverClassName"
-					value="oracle.jdbc.driver.OracleDriver" />
-				<property name="url"
-					value="jdbc:oracle:thin:@localhost:1521:korea" />
+				<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:korea" />
 				<property name="username" value="lunchbox" />
 				<property name="password" value="lunchbox" />
 				
 				<property name="defaultAutoCommit" value="false" />
 			</bean>
 				
-			
-			
-	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+			<mybatis-spring:scan base-package="ㅣ1.ㅣ2.ㅣ3.mappers" />	
+			 -->
+<!-- 	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
 		<constructor-arg ref="realDataSource" />
 		<property name="logFormatter">
 			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
@@ -58,10 +67,10 @@
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
-	</bean>
+	</bean> -->
 
 
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+<!-- 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="select*" read-only="true"
 				rollback-for="Exception" />
@@ -70,17 +79,7 @@
 			<tx:method name="delete*" rollback-for="Exception" />
 		</tx:attributes>
 	</tx:advice>
-	
-	
-	<aop:config>
-		<aop:pointcut
-			expression="execution(* com.kh.bookmate..*ServiceImpl*.*(..))"
-			id="serviceMethod" />
-		<aop:advisor id="transactionAdvisor"
-			pointcut-ref="serviceMethod" advice-ref="txAdvice" />
-	</aop:config>
-			
-			
+	 -->
 			<!-- 
 			 DB정보를 자기는 datasource와 쿼리문을 작성하는 Mapper.xml이 있는 경로 설정하는 mapperLocations를 
 		 포함하는 빈 객체 생성 (파일이 아무것도 가지고 있지 않다면 404 오류 뜨는거 유의하기 )-->

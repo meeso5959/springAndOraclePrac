@@ -26,12 +26,6 @@ public class MemberController {
 		return "mList";
 		}
 	
-		/*
-		 * @RequestMapping("memberTest.do") public string memberSelect(Member member,
-		 * Model model) {
-		 * 
-		 * return "selectMember.mem"; }
-		 * 
-		 */
+
 	
 }

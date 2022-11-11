@@ -25,5 +25,9 @@ public class Member {
 	private Date modi_day;
 	private String status;
 	private int point;
+
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
 	
 }

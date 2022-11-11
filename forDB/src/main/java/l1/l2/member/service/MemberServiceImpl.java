@@ -1,6 +1,5 @@
 package l1.l2.member.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
