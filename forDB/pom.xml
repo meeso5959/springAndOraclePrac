@@ -33,7 +33,9 @@
 	        <groupId>org.springframework</groupId>
 	        <artifactId>spring-jdbc</artifactId>
 	        <version>${org.springframework-version}</version>
-	    </dependency> <!-- MyBatis -->
+	    </dependency> 
+	    
+	    <!-- MyBatis -->
 	    <dependency>
 	        <groupId>org.mybatis</groupId>
 	        <artifactId>mybatis</artifactId>
@@ -44,6 +46,22 @@
 	        <artifactId>mybatis-spring</artifactId>
 	        <version>1.3.2</version>
 	    </dependency>
+	    
+	    <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-tx</artifactId>
+		    <version>5.0.7.RELEASE</version>
+		</dependency>
+	    
+	   <!-- sql 로그 확인용도 https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4 -->
+		<dependency>
+		    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+		    <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+		    <version>1.16</version>
+		</dependency>
+	    
+	    
 	    <dependency>
 	        <groupId>commons-dbcp</groupId>
 	        <artifactId>commons-dbcp</artifactId>
@@ -55,6 +73,30 @@
 	        <version>11.2.0.4</version>
 	    </dependency>
 	<!-- 오라클용 추가 끝-->
+	
+	
+	<!-- json 데이터 처리를 위한 데이터 바인드 추가  -->
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.9.4</version>
+	</dependency>
+	
+	<!-- 파일 업로드를 위해 commons-fileupload추가  -->
+	<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+	<dependency>
+	    <groupId>commons-fileupload</groupId>
+	    <artifactId>commons-fileupload</artifactId>
+	    <version>1.3.3</version>
+	</dependency>
+		
+	
+	<dependency>
+		<groupId>net.sf</groupId>
+		<artifactId>log4jdbc3</artifactId>
+		<version>1.1</version>
+	</dependency>
 	
 	
 		<!-- Spring -->
@@ -134,12 +176,23 @@
 		</dependency>
 				
 		<!-- Servlet -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
+		</dependency> -->
+	
+		<!-- 기존버전 주석 후 버전 업 서블렛 추가 -->	
+	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.1.0</version>
+		    <scope>provided</scope>
 		</dependency>
+		
+		
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
